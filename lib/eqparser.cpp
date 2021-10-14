@@ -2,7 +2,7 @@
 #include <iostream>
 #include <unordered_set>
 #include <cmath>
-#include "niutron.hpp"
+#include "eqparser.hpp"
 #include "helper.hpp"
 
 // convert expression string to postfix vector of chars
@@ -11,25 +11,25 @@
 	https://en.wikipedia.org/wiki/Shunting-yard_algorithm#The_algorithm_in_detail
 */
 
-Niutron::Niutron() {
+EqParser::EqParser() {
 	postVec = {0};
 }
 
-Niutron::Niutron(std::string expression) {
+EqParser::EqParser(std::string expression) {
 	// TODO: Validate expression
 	postVec = stringToPostfix(expression);
 }
 
-void Niutron::setExpression(std::string expression) {
+void EqParser::setExpression(std::string expression) {
 	// TODO: Validate expression
 	postVec = stringToPostfix(expression);
 }
 
-std::vector<char> Niutron::getExpression() {
+std::vector<char> EqParser::getExpression() {
 	return postVec;
 }
 
-std::vector<char> Niutron::stringToPostfix(std::string expression) {
+std::vector<char> EqParser::stringToPostfix(std::string expression) {
 	std::vector<char> output;
 	std::vector<char> opStack;
 	for (std::vector<char>::size_type i = 0; i < expression.length(); i++) {
@@ -119,7 +119,7 @@ std::vector<char> Niutron::stringToPostfix(std::string expression) {
 }
 
 // evaluate postfix char vector and return double
-double Niutron::evaluate(double x, double y, double z) {
+double EqParser::evaluate(double x, double y, double z) {
 	std::vector<double> valStack = {};
 	// iterate through vector containg postfix
 	for (char token : postVec) {

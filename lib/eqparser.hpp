@@ -4,11 +4,11 @@
 #include <string>
 #include <vector>
 
-class Niutron {
+class EqParser {
 	public:
 		// constructors
-		Niutron();
-		Niutron(std::string expression);
+		EqParser();
+		EqParser(std::string expression);
 
 		// getter and  setter
 		void setExpression(std::string expression);

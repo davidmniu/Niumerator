@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "../lib/niutron.hpp"
+#include "../lib/eqparser.hpp"
 #include "../include/ode_ivp_methods.hpp"
 
 void printSolution(std::vector<std::vector<double>> solution) {
@@ -9,7 +9,7 @@ void printSolution(std::vector<std::vector<double>> solution) {
 	}
 }
 
-std::vector<std::vector<double>> euler(Niutron* f, double a, double b, double N, double init) {
+std::vector<std::vector<double>> euler(EqParser* f, double a, double b, double N, double init) {
 	std::vector<std::vector<double>> output;
 	double h = (b-a)/N;
 	double t = a;
@@ -23,7 +23,7 @@ std::vector<std::vector<double>> euler(Niutron* f, double a, double b, double N,
 	return output;
 }
 
-std::vector<std::vector<double>> rk4(Niutron* f, double a, double b, double N, double init) {
+std::vector<std::vector<double>> rk4(EqParser* f, double a, double b, double N, double init) {
 	std::vector<std::vector<double>> output;
 	double k1, k2, k3, k4;
 	double h = (b-a)/N;
@@ -43,7 +43,7 @@ std::vector<std::vector<double>> rk4(Niutron* f, double a, double b, double N, d
 }
 
 // TODO: Check method for mistakes
-std::vector<std::vector<double>> rkf(Niutron* f, double a, double b, double init, double tol, double hmax, double hmin) {
+std::vector<std::vector<double>> rkf(EqParser* f, double a, double b, double init, double tol, double hmax, double hmin) {
 	std::vector<std::vector<double>> output;
 	double k1, k2, k3, k4, k5, k6, r, delta;
 	double h = hmax;
